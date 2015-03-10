@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body onload="initialize()">
+    <form>
+        <input type="text" id="input" onkeyup="JSONP(); getUrlList(); testJson();" list="jsonDiv" />
+        <div id="player"></div>
+        <datalist id="jsonDiv"></datalist>
+    </form>
+    <div id="url"></div>
+    <script>
+        function initialize() {
+            $.ajax({
+                type: "POST",
+                url: "WebService1.asmx/initializeCloud",
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+
+                },
+                error: function (data) {
+                    //Console.log(data.d);
+                }
+            });
+        }
+
+function testJson() {
+
+
+	var input = { input: $("#input").val().trim() };
+
+
+	$.ajax({
+    	type: "POST",
+    	url: "WebService2.asmx/getChildrenS",
+    	data: JSON.stringify(input),
+    	contentType: "application/json; charset=utf-8",
+    	dataType: "json",
+    	success: function (data) {
+
+        	var t = "";
+        	$.each(data.d, function () {
+            	t += "<option>" + this + "</option>";
+
+        	});
+        	//t += "</datalist>"
+
+        	$("#jsonDiv").html(t);
+    	},
+    	error: function (data) {
+        	//Console.log(data.d);
+    	}
+    	});
+
+}
+
+function getUrlList() {
+	var input = { input: $("#input").val().trim() };
+
+	$.ajax({
+    	type: "POST",
+    	url: "WebService1.asmx/GetResults",
+    	data: JSON.stringify(input),
+    	contentType: "application/json; charset=utf-8",
+    	dataType: "json",
+    	success: function (data) {
+        	var t = "<ul style='list-style-type: none;'>";
+        	$.each(data.d, function () {
+            	t += "<li><a href='" + this + "'>" + this + "</a></li>";
+        	});
+
+        	t += "</ul>"
+        	$("#url").html(t);
+    	},
+    	error: function (data) {
+        	//$("#jsonDiv").html(data.d);
+    	}
+	});
+}
+
+        function JSONP() {
+            var name = { name: $("#input").val().trim() };
+            $.ajax({
+                crossDomain: true,
+                contentType: "application/json; charset=utf-8",
+                url: "http://ec2-52-11-246-229.us-west-2.compute.amazonaws.com/nba.php",
+                data: { name: $("#input").val().trim() },
+                dataType: "jsonp",
+                success: function (data) {
+                    var t = "<p>" + data.Name + " GP: " + data.GP + " FGP: " + data.FGP + " TPP: " + data.TPP + " FTP: " + data.FTP + " PPG: " + data.PPG + "</p>";
+                    $("#player").html(t);
+                },
+                error: function (data) {
+                    var t = "";
+                    $("#player").html(t);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\bin\Debug\HtmlAgilityPack.dll
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\bin\Debug\HtmlAgilityPack.xml
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\iguest\Documents\Visual Studio 2013\Projects\AzureCloudService1\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
